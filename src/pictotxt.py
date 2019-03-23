@@ -19,4 +19,4 @@ def main():
     print('\n'.join([''.join(row) for row in result]))
   
 if __name__== "__main__":
-  main()
+    main()

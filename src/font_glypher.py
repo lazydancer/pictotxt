@@ -3,8 +3,8 @@ import numpy as np
 
 def convert(font_path, characters, size):
     '''
-    Returns a dictionary, keys: character as string
-                          value: Image data representing character as an narray
+    Returns a dictionary, key: character
+                          value: characcter image as narray
     '''
     fnt = ImageFont.truetype(font_path, size)
     results = []

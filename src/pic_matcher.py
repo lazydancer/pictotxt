@@ -3,37 +3,24 @@ import numpy as np
 from skimage.util.shape import view_as_blocks
 
 def solve_section(section, letters):
-    min_score = 1000000
+    min_score = float('inf')
     min_letter = None
-    id = 0
     
     for k in letters:
         score = np.sum(np.absolute(letters[k] - section))
         if score < min_score:
             min_score = score
-            min_letter = letters[k]
-            min_id = k
+            min_letter = k
             
-    return (min_id, min_letter)
-'''
-def solve(sections, letters):
-    results = []
-    ids = []
-    for s in sections:
-        id, min_letter = solve_section(s, letters)
-        results.append(min_letter)
-        ids.append(id)
-
-    return (ids, np.stack(results, axis=0))
-'''
+    return min_letter
 
 def solve(letter_images, images_slices):
     result = []
     for y in images_slices:
         row = []
         for x in y:
-            id, _ = solve_section(x, letter_images)
-            row.append(id)
+            letter = solve_section(x, letter_images)
+            row.append(letter)
         result.append(row)
 
     return result 

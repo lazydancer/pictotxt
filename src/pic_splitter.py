@@ -27,4 +27,3 @@ def get_image_slices(image_path, char_width, char_height):
     image_slices = view_as_blocks(image_2D, block_shape=(char_height,char_width))
     
     return image_slices
-
