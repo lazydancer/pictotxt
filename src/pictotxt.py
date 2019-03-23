@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-import matplotlib.pyplot as plt
 from skimage.util.shape import view_as_blocks
 
 def trim_image(matrix, size_x, size_y):
@@ -76,7 +75,7 @@ def solve(sections, letters):
 
 char_width = 10
 char_height = 18
-image_slices = get_image_slices('../bird-twitter.png', char_width, char_height)
+image_slices = get_image_slices('../tests/octocat.png', char_width, char_height)
 
 images = image_slices.reshape(image_slices.shape[0]*image_slices.shape[1], image_slices.shape[2], image_slices.shape[3])
 nb_across = image_slices.shape[0]
