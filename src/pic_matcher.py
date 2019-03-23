@@ -7,16 +7,15 @@ def solve_section(section, letters):
     min_letter = None
     id = 0
     
-    for letter in letters:
-        score = np.sum(np.absolute(letter - section))
+    for k in letters:
+        score = np.sum(np.absolute(letters[k] - section))
         if score < min_score:
             min_score = score
-            min_letter = letter
-            min_id = id
-        id += 1
+            min_letter = letters[k]
+            min_id = k
             
     return (min_id, min_letter)
-
+'''
 def solve(sections, letters):
     results = []
     ids = []
@@ -26,3 +25,15 @@ def solve(sections, letters):
         ids.append(id)
 
     return (ids, np.stack(results, axis=0))
+'''
+
+def solve(letter_images, images_slices):
+    result = []
+    for y in images_slices:
+        row = []
+        for x in y:
+            id, _ = solve_section(x, letter_images)
+            row.append(id)
+        result.append(row)
+
+    return result 
