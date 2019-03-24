@@ -9,10 +9,10 @@ import pic_matcher
 def main():    
     input_letters = string.printable
     size = 15
-    letter_images = font_glypher.convert('../fonts/SFMono-Regular.otf', input_letters, size)
+    letter_images = font_glypher.convert('fonts/SFMono-Regular.otf', input_letters, size)
 
     char_width, char_height = 10, 18
-    image_slices = pic_splitter.get_image_slices('../tests/octocat.png', char_width, char_height)
+    image_slices = pic_splitter.get_image_slices('tests/octocat.png', char_width, char_height)
 
     result = pic_matcher.solve(letter_images, image_slices)
 
