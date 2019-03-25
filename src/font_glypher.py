@@ -4,7 +4,7 @@ import numpy as np
 def convert(font_path, characters, size):
     '''
     Returns a dictionary, key: character
-                          value: characcter image as narray
+                          value: character image as narray
     '''
     fnt = ImageFont.truetype(font_path, size)
     results = []
@@ -14,7 +14,7 @@ def convert(font_path, characters, size):
         d = ImageDraw.Draw(img)
         d.text((0,0),letter, font=fnt, fill=(0,0,0))
         img = img.convert('L') #greyscale
-        
+
         d = list(img.getdata())
         image_2D = np.reshape(d, (img.height, img.width))
         

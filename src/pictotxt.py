@@ -7,11 +7,12 @@ import pic_combiner
 import pic_matcher
 
 def main():    
-    input_letters = string.printable
-    size = 15
-    letter_images = font_glypher.convert('fonts/SFMono-Regular.otf', input_letters, size)
+    input_letters = string.ascii_letters + string.digits + string.punctuation + ' '
 
-    char_width, char_height = 10, 18
+    size = 15
+    letter_images = font_glypher.convert('fonts/DroidSansMono/DroidSansMono.ttf', input_letters, size)
+
+    char_height, char_width = next(iter(letter_images.values())).shape
     image_slices = pic_splitter.get_image_slices('tests/octocat.png', char_width, char_height)
 
     result = pic_matcher.solve(letter_images, image_slices)

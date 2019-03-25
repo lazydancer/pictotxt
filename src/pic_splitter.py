@@ -18,7 +18,7 @@ def trim_image(matrix, size_x, size_y):
     
 def get_image_slices(image_path, char_width, char_height):
     image = Image.open(image_path)
-    image = image.convert('L') #greyscale
+    image = image.convert('L') # greyscale
     
     data = list(image.getdata())
     image_2D = np.reshape(data, (image.height, image.width))
