@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from skimage.util.shape import view_as_blocks
 
 def solve_section(section, letters):
     min_score = float('inf')

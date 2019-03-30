@@ -16,14 +16,11 @@ def trim_image(matrix, size_x, size_y):
     
     return matrix
     
-def get_image_slices(image_path, char_width, char_height):
-    image = Image.open(image_path)
-    image = image.convert('L') # greyscale
+def get_image_slices(image_path, slice_width, slice_height):
+    image_2D = np.asarray(Image.open(image_path).convert('L'))
+
+    image_2D = trim_image(image_2D, slice_width, slice_height)
     
-    data = list(image.getdata())
-    image_2D = np.reshape(data, (image.height, image.width))
-    
-    image_2D = trim_image(image_2D, char_width, char_height)
-    image_slices = view_as_blocks(image_2D, block_shape=(char_height,char_width))
+    image_slices = view_as_blocks(image_2D, block_shape=(slice_height,slice_width))
     
     return image_slices
