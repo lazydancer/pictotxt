@@ -11,11 +11,10 @@ def extract_glyphs(font, characters):
     font_dimensions = font.getsize('j') 
 
     results = []
-
     for letter in characters:
         img = Image.new('L', font_dimensions, color=255)
-        d = ImageDraw.Draw(img)
-        d.text((0,0),letter, font=font, fill=0)
+        draw = ImageDraw.Draw(img)
+        draw.text((0,0),letter, font=font, fill=0)
         image_2D = np.reshape(list(img.getdata()), (img.height, img.width))
         
         results.append(image_2D)
