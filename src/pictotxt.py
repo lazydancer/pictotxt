@@ -10,18 +10,15 @@ def extract_glyphs(font, characters):
     # mono-font has the same width, decender used to set height
     font_dimensions = font.getsize('j') 
 
-    results = []
+    results = {}
     for letter in characters:
         img = Image.new('L', font_dimensions, color=255)
         draw = ImageDraw.Draw(img)
-        draw.text((0,0),letter, font=font, fill=0)
-        image_2D = np.reshape(list(img.getdata()), (img.height, img.width))
+        draw.text((0,0), letter, font=font, fill=0)
+        array = np.array(list(img.getdata()), dtype='uint8')
+        results[letter] = np.reshape(array, (img.height, img.width))
         
-        results.append(image_2D)
-
-    letter_imgs = np.stack(results, axis=0)
-        
-    return dict(zip(characters, letter_imgs))
+    return results
 
 def get_image_slices(image_2D, slice_width, slice_height):
     '''
@@ -30,7 +27,7 @@ def get_image_slices(image_2D, slice_width, slice_height):
     height = image_2D.shape[0] // slice_height
     width = image_2D.shape[1] // slice_width
     
-    result = np.zeros((height, width, slice_height, slice_width))
+    result = np.zeros((height, width, slice_height, slice_width), dtype='uint8')
     for y in range(height):
         for x in range(width):
             start_x = x * slice_width
@@ -49,19 +46,19 @@ def match(letter_images, image_slices):
     return [[match_section(img, letter_images) for img in row] for row in image_slices] 
 
 
-def main():
+def main(file_path='tests/octocat.png'):
     input_letters = string.ascii_letters + string.digits + string.punctuation + ' '
 
     font = ImageFont.truetype('fonts/DroidSansMono/DroidSansMono.ttf', 15)
     letter_images = extract_glyphs(font, input_letters)
 
-    image_2D = np.asarray(Image.open('tests/octocat.png').convert('L'))
+    image_2D = np.asarray(Image.open(file_path).convert('L'))
     char_height, char_width = letter_images[input_letters[0]].shape
     image_slices = get_image_slices(image_2D, char_width, char_height)
 
     result = match(letter_images, image_slices)
 
-    print('\n'.join([''.join(row) for row in result]))
+    return '\n'.join([''.join(row) for row in result])
   
 if __name__== "__main__":
-    main()
+    print(main())
