@@ -43,5 +43,5 @@ For each mini-image from the imported image, it is compared to each character ti
 
 We get the final image as text
 
-![step5](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png)
+<img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png" width="366">
 
