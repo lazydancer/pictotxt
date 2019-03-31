@@ -1,8 +1,10 @@
-import numpy as np
 import string
+import sys
+
+import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-def extract_glyphs(font, characters):
+def extract_char_images(font, characters):
     '''
     Returns a dictionary, key: character
                           value: character image as narray
@@ -50,7 +52,7 @@ def main(file_path='examples/octocat.png'):
     input_letters = string.ascii_letters + string.digits + string.punctuation + ' '
 
     font = ImageFont.truetype('fonts/DroidSansMono/DroidSansMono.ttf', 13)
-    letter_images = extract_glyphs(font, input_letters)
+    letter_images = extract_char_images(font, input_letters)
 
     image_2D = np.asarray(Image.open(file_path).convert('L'))
     char_height, char_width = letter_images[input_letters[0]].shape
@@ -58,7 +60,7 @@ def main(file_path='examples/octocat.png'):
 
     result = match(letter_images, image_slices)
 
-    return '\n'.join([''.join(row) for row in result])
+    print('\n'.join([''.join(row) for row in result]))
   
 if __name__== "__main__":
-    print(main())
+    main(sys.argv[1])
