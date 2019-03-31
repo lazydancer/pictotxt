@@ -13,10 +13,9 @@ def extract_glyphs(font, characters):
     results = []
 
     for letter in characters:
-        img = Image.new('RGB', font_dimensions, color=(255,255,255))
+        img = Image.new('L', font_dimensions, color=255)
         d = ImageDraw.Draw(img)
-        d.text((0,0),letter, font=font, fill=(0,0,0))
-        img = img.convert('L') # greyscale
+        d.text((0,0),letter, font=font, fill=0)
         image_2D = np.reshape(list(img.getdata()), (img.height, img.width))
         
         results.append(image_2D)
@@ -41,44 +40,27 @@ def get_image_slices(image_2D, slice_width, slice_height):
 
     return result
 
-def solve(letter_images, images_slices):
-    def solve_section(section, letters):
-        min_score = float('inf')
-        min_letter = None
+def match(letter_images, image_slices):
+    '''
+    Returns 2d array matching shape of image slices of 'best' letter match
+    '''
+    def match_section(section, letters):
+        return min(letter_images, key=lambda ltr : np.sum(np.absolute(letters[ltr] - section)))
 
-        for k in letters:
-            score = np.sum(np.absolute(letters[k] - section))
-            if score < min_score:
-                min_score = score
-                min_letter = k
-                
-        return min_letter
-
-    result = []
-    for y in images_slices:
-        row = []
-        for x in y:
-            letter = solve_section(x, letter_images)
-            row.append(letter)
-        result.append(row)
-
-    return result 
+    return [[match_section(img, letter_images) for img in row] for row in image_slices] 
 
 
 def main():
-    def random_val(dictionary):
-        return next(iter(dictionary.values()))
-    
     input_letters = string.ascii_letters + string.digits + string.punctuation + ' '
 
     font = ImageFont.truetype('fonts/DroidSansMono/DroidSansMono.ttf', 15)
     letter_images = extract_glyphs(font, input_letters)
 
     image_2D = np.asarray(Image.open('tests/octocat.png').convert('L'))
-    char_height, char_width = random_val(letter_images).shape
+    char_height, char_width = letter_images[input_letters[0]].shape
     image_slices = get_image_slices(image_2D, char_width, char_height)
 
-    result = solve(letter_images, image_slices)
+    result = match(letter_images, image_slices)
 
     print('\n'.join([''.join(row) for row in result]))
   
