@@ -27,7 +27,7 @@ def get_image_slices(image_2D, slice_width, slice_height):
     height = image_2D.shape[0] // slice_height
     width = image_2D.shape[1] // slice_width
     
-    result = np.zeros((height, width, slice_height, slice_width), dtype='uint8')
+    result = np.zeros((height, width, slice_height, slice_width))
     for y in range(height):
         for x in range(width):
             start_x = x * slice_width
@@ -41,7 +41,7 @@ def match(letter_images, image_slices):
     Returns 2d array matching shape of image slices of 'best' letter match
     '''
     def match_section(section, letters):
-        return min(letter_images, key=lambda ltr : np.sum(np.absolute(letters[ltr] - section)))
+        return min(letter_images, key=lambda ltr : np.sum(np.absolute(letters[ltr] - section)**2))
 
     return [[match_section(img, letter_images) for img in row] for row in image_slices] 
 
