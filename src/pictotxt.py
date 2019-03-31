@@ -46,10 +46,10 @@ def match(letter_images, image_slices):
     return [[match_section(img, letter_images) for img in row] for row in image_slices] 
 
 
-def main(file_path='tests/octocat.png'):
+def main(file_path='examples/octocat.png'):
     input_letters = string.ascii_letters + string.digits + string.punctuation + ' '
 
-    font = ImageFont.truetype('fonts/DroidSansMono/DroidSansMono.ttf', 15)
+    font = ImageFont.truetype('fonts/DroidSansMono/DroidSansMono.ttf', 13)
     letter_images = extract_glyphs(font, input_letters)
 
     image_2D = np.asarray(Image.open(file_path).convert('L'))

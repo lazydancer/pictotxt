@@ -1,30 +1,16 @@
+# pictotxt 
+
+[![Build Status](https://travis-ci.org/SpaceVim/SpaceVim.svg?branch=master)](https://travis-ci.org/SpaceVim/SpaceVim)
+
+## About
+
+**pictotxt** is a a python script which takes an image and outputs text in the form of the input image
+
+[![SpaceVim](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif)]()
+
+## How it works
 
 
-```
-                                                  ___                          __                                                    
-                                                  @@@@@g_         _       _gg@@@@g                                                   
-                                                 J@@@@@@@@g@@@@@@@@@@@@@@@@@@@@@@@                                                   
-                                                 {@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                                   
-                                                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                                   
-                                                _@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@y                                                 
-                                                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@y                                                
-                                               g@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                                
-                                               @@@@@@@@**`````**"TT"**``````"@@@@@@@@L                                               
-                                               @@@@@@"                         @@@@@@L                                               
-                                               @@@@@     >@@             @@y    @@@@@                                                
-                                               4@@@@     @@@1           {@@@    q@@@@                                                
-                                  . -~~:"**"""""@@@@     %@@             @@P    @@@@P"""""**":~~- .                                  
-                                   _. ~~*"``     M@@@            J@            q@@@P     ``"*~- ._                                   
-                                                  "M@@g_         ,_/         _g@@@`                                                  
-                                              __     "@@@@gggggggggggggggggg@@@*                                                     
-                                             `@@@g         "Q@@@@@@@@@@@""`                                                          
-                                                *@@,       g@@@@@@@@@@@@@y                                                           
-                                                 `@@@gu_.gq@@@@@@@ @@@@@@@                                                           
-                                                   *M@@@@@@@@@q@@@ @@@ @@@                                                           
-                                                          q@@@q@@@ @@@ @@@                                                           
-                                                          q@@@q@@@ @@@ @@@                                                           
-                                                          q@@@q@@@ @@@ @@@                                                           
-                                                          g@@@q@@@ @@@ @@@g                                                          
-                                                        q@@@* q@@@ @@@p @M@@p                                                        
-                                                             q@@@" ?M@@p                                                             
-```
+
+
+
