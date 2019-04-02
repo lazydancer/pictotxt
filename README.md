@@ -25,11 +25,11 @@ The result will be printed on your console/terminal
 
 ## How it works
 
-Input an image
+Input:
 
 ![step1](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step1.png)
 
-Take the imported image and converting it to character sized images. 
+The imported image is split up into 'character sized' images. 
 
 ![step2](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png)
 
@@ -37,11 +37,11 @@ Split of the font to get individual images of each character
 
 ![step3](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step3.png)
 
-For each mini-image from the imported image, it is compared to each character till the closest value is found. It is found using the following objective function
+For each mini-image from the imported image, compare it with all the characters and find the best match with the following function
 
 ![step4](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step4.png)
 
-We get the final image as text
+Result:
 
 <img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png" width="366">
 
