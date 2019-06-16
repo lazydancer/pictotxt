@@ -4,7 +4,7 @@
 
 ## About
 
-**pictotxt** is a a python script which takes an image and outputs text in the form of the input image
+**pictotxt** is a python script which converts an image to text
 
 ![pictotxt](https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif)
 
