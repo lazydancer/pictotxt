@@ -1,6 +1,6 @@
 # pictotxt 
 
-[![Build Status](https://travis-ci.org/SpaceVim/SpaceVim.svg?branch=master)](https://travis-ci.org/lazydancer/pictotxt)
+[![Build Status](https://travis-ci.org/lazydancer/pictotxt.svg?branch=master)](https://travis-ci.org/lazydancer/pictotxt)
 
 ## About
 
